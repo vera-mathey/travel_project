@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block title %}Où partir sans avion ?{% endblock %}
+
+{% block body %}
+
+<div class="col-md-12 mb-2 d-flex justify-content-center mainsansavion"><h1 class="h1-main mb-5">Où partir sans avion ?</h1></div>
+<div class="container mt-5">
+    <div class="col-md-12">
+        <p>Envie de voyager sans prendre l'avion ? Découvrez les plus belles destinations accessibles en bateau, en train, voiture ou en bus et des idées de voyage écoresponsables en France, 
+            en Europe et même au bout du monde pour réduire votre impact écologique. De quelques jours ou quelques semaines, en famille ou en amoureux, en hiver ou en été... il y a en pour 
+            tous les goûts et les budgets !
+        </p>
+    </div>
+    <div class="row mt-5">
+    {% for city in cityList %}
+         <div class="col-md-4">
+            <div class="col-md-12 d-flex justify-content-center"><a href="{{ path('showone', {'id' : city.id}) }}"><img class="img-fluid img-blocks" src="{{ asset('images/destinations/villes/'~city.image) }}" alt="{{ city.name }}"></a></div>
+            <div class="col-md-12 city-title d-flex justify-content-center"><a href="{{ path('showone', {'id' : city.id}) }}">{{city.name}}</a></div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -6,5 +6,7 @@ import './bootstrap.js';
  * which should already be in your base.html.twig.
  */
 import './styles/app.css';
-
+import './css/style.css';
+const comments = document.querySelector('#comments');
+const counter = document.querySelector('#nombrecomments');
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');

@@ -1,0 +1,130 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voyagez naturellement{% endblock %}
+
+{% block body %}
+{#main screen#}
+<div>
+    <div class="container-fluid main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mt-5 mb-5">
+                    <div class="col-md-12"><h1 class="h1-main display-1">Choisissez <br>la destination</h1></div>
+                    <div class="dropdown  mt-5 mb-5">
+                        <button class="btn dropdown-toggle buttontransp" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Destination
+                        </button>
+                            <ul class="dropdown-menu">
+                                {% for country in countriesMenu %}
+                                    <li><a class="dropdownmenu" href="{{ path('showonecountry', {'id' : country.id }) }}">{{ country.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                    </div>
+                </div>
+            <div class="col-md-6"></div>
+        </div>    
+    </div>
+</div>
+{#end main screen#}
+
+{#first block#}
+<div class="container mt-5 mb-5">
+    <div class="col-md-12 mb-3 d-flex justify-content-center"><h2>Des idées de vacances pour cet été</h2></div>
+    <div class="row mb-5">
+         <div class="col-md-4">
+            <div class="col-md-12 d-flex justify-content-center"><a href="{{ path('showone', {'id' : cityList[0].id}) }}"><img class="img-fluid img-blocks" src="{{ asset('images/destinations/villes/'~cityList[0].image) }}" alt="{{ cityList[0].name }}"></a></div>
+            <div class="col-md-12 guide-title d-flex justify-content-center"><a href="{{ path('showone', {'id' : cityList[0].id}) }}">{{cityList[0].name}}</a></div>
+        </div>
+        <div class="col-md-4">
+            <div class="col-md-12 d-flex justify-content-center"><a href="{{ path('showone', {'id' : cityList[1].id}) }}"><img class="img-fluid img-blocks" src="{{ asset('images/destinations/villes/'~cityList[1].image) }}" alt="{{ cityList[1].name }}"></a></div>
+            <div class="col-md-12 guide-title d-flex justify-content-center"><a href="{{ path('showone', {'id' : cityList[1].id}) }}">{{cityList[1].name}}</a></div>
+        </div>
+        <div class="col-md-4">
+            <div class="col-md-12 d-flex justify-content-center"><a href="{{ path('showone', {'id' : cityList[2].id}) }}"><img class="img-fluid img-blocks" src="{{ asset('images/destinations/villes/'~cityList[2].image) }}" alt="{{ cityList[2].name }}"></a></div>
+            <div class="col-md-12 guide-title d-flex justify-content-center"><a href="{{ path('showone', {'id' : cityList[2].id}) }}">{{cityList[2].name}}</a></div>
+        </div>
+    </div>
+</div>
+{#<div class="d-flex justify-content-center mt-3"><a class="btn button-color" href="{{path('app_sansavion')}}" role="button">Voir plus de destinations</a></div>#}
+{#end first block#}
+
+{#carusel#}
+{% set i = 0 %}
+
+<div class="container-fluid carusel mt-5 mb-5">
+  <div class="container"> <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"> 
+    <div class="carousel-indicators"> {% set i = 0 %} 
+    {% for post in ouPartirList %} 
+        {% if i == 0 %} 
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ i }}" class="active" aria-current="true" aria-label="Slide {{ i + 1 }}"></button> 
+        {% else %} 
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ i }}" aria-label="Slide {{ i + 1 }}"></button> 
+      {% endif %} {% set i = i + 1 %} 
+      {% endfor %} 
+    </div> 
+    <div class="carousel-inner"> 
+    {% set j = 0 %} 
+    {% for post in ouPartirList %} 
+      {% if j == 0 %} 
+        <div class="carousel-item active"> 
+      {% else %} 
+          <div class="carousel-item"> 
+      {% endif %} 
+            <div class="row mt-5 mb-5"> 
+              <div class="col-md-6 mt-5">
+                <div class="row"><div class="col-md-8 d-flex align-items-center"><a class="h1-carusel" href="{{ path('showonepost', {'id' : post.id}) }}">{{ post.title }}</a></div><div class="col-md-4"></div></div>
+                <div class="col-md-12 d-flex align-items-center"><a class="text-carusel" href="{{ path('showonepost', {'id' : post.id}) }}">{{ post.abstract|raw|nl2br }}</a></div>
+                <div class="col-md-12 d-flex align-items-center"><a class="text-carusel" href="{{ path('showonepost', {'id' : post.id}) }}">{{ post.content|raw|nl2br }}</a></div>
+                <div class="mt-5"><a class="btn button-carusel" href="{{ path('showonepost', {'id' : post.id}) }}" role="button">Lire plus</a></div> 
+              </div>
+              <div class="col-md-6 mt-5 mb-5 d-flex flex-row-reverse"><a href="{{ path('showonepost', {'id' : post.id}) }}"><img class="img-carusel img-fluid d-block w-100" src="{{ asset('images/posts/'~ post.image) }}" alt="{{ post.title }}"></a></div> 
+            </div>
+          </div> {% set j = j + 1 %} {% endfor %} 
+      </div>
+      {#<button class="carousel-control-prev d-flex flex-row" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="visually-hidden">Previous</span> </button> 
+      <button class="carousel-control-next d-flex flex-row-reverse" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="visually-hidden">Next</span> </button>#} 
+    </div> 
+  </div> 
+</div>
+{#end carusel#}
+{#actualites#}
+<div class="container mt-5">
+    <div class="col-md-12 mt-5 mb-2 d-flex justify-content-center"><h2>Actualités</h2></div>
+    <div class="row mt-3">
+         <div class="col-md-3">
+            <div class="col-md-12 d-flex justify-content-center"><a href="{{ path('showonepost', {'id' : actualites[0].id}) }}"><img class="img-fluid img-blocks" src="{{ asset('images/posts/'~actualites[0].image) }}" alt="{{ actualites[0].title }}"></a></div>
+            <div class="col-md-12 city-title d-flex justify-content-center"><a href="{{ path('showonepost', {'id' : actualites[0].id}) }}">{{actualites[0].title}}</a></div>
+        </div>
+        <div class="col-md-3">
+            <div class="col-md-12 d-flex justify-content-center"><a href="{{ path('showonepost', {'id' : actualites[1].id}) }}"><img class="img-fluid img-blocks" src="{{ asset('images/posts/'~actualites[1].image) }}" alt="{{ actualites[1].title }}"></a></div>
+            <div class="col-md-12 city-title d-flex justify-content-center"><a href="{{ path('showonepost', {'id' : actualites[1].id}) }}">{{actualites[1].title}}</a></div>
+        </div>
+        <div class="col-md-3">
+            <div class="col-md-12 d-flex justify-content-center"><a href="{{ path('showonepost', {'id' : actualites[2].id}) }}"><img class="img-fluid img-blocks" src="{{ asset('images/posts/'~actualites[2].image) }}" alt="{{ actualites[2].title }}"></a></div>
+            <div class="col-md-12 city-title d-flex justify-content-center"><a href="{{ path('showonepost', {'id' : actualites[2].id}) }}">{{actualites[2].title}}</a></div>
+        </div>
+        <div class="col-md-3">
+            <div class="col-md-12 d-flex justify-content-center"><a href="{{ path('showonepost', {'id' : actualites[3].id}) }}"><img class="img-fluid img-blocks" src="{{ asset('images/posts/'~actualites[3].image) }}" alt="{{ actualites[3].title }}"></a></div>
+            <div class="col-md-12 city-title d-flex justify-content-center"><a href="{{ path('showonepost', {'id' : actualites[3].id}) }}">{{actualites[3].title}}</a></div>
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-center mt-4 mb-5"><a class="btn button-color" href="{{path('app_actualites')}}" role="button">Toutes les actualités</a></div>
+{#end actualites#}
+{#guides#}
+<div class="container mt-5 mb-5">
+<div class="col-md-12 mb-4 d-flex justify-content-center"><h2>Guide dans votre destination</h2></div>
+    <div class="row">
+    {% for guide in guides %}
+         <div class="col-md-3">
+            <div class="col-md-12 d-flex justify-content-center"><a href="{{ path('showoneguide', {'id' : guide.id}) }}"><img class="img-fluid avatar" src="{{ asset('images/avatars/'~guide.avatar) }}" alt="{{ guide.firstname }}"></a></div>
+            <div class="col-md-12 guide-title d-flex justify-content-center"><a href="{{ path('showoneguide', {'id' : guide.id}) }}">{{guide.firstname}}</a></div>
+            <div class="col-md-12 d-flex justify-content-center"><a class="text" href="{{ path('showoneguide', {'id' : guide.id}) }}">{{guide.city}}</a></div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+<div class="d-flex justify-content-center mt-4 mb-5"><a class="btn button-color" href="{{path('app_guides')}}" role="button">Trouver un guide</a></div>
+{#end guides#}
+{% endblock %}

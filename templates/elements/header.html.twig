@@ -1,0 +1,130 @@
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            {#menu#}
+            <div class="col-md-5 col-xs-4 col-sm-4 fixed-top-navbar menu">
+                <nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong">
+                    <div class="container-fluid mt-5">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" data-bs-theme="dark">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item me-2">
+                                    <a class="nav-link" aria-current="page" href="{{path('app_post')}}">Accueil</a>
+                                </li>
+                                <li class="nav-item dropdown me-2">
+                                    <a class="nav-link dropdown-toggle" aria-current="page" href="{{path('app_countries')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pays</a>
+                                    <ul class="dropdown-menu">
+                                        {% for country in countriesMenu %}
+                                            <li><a class="dropdownmenu" href="{{ path('showonecountry', {'id' : country.id }) }}">{{ country.name }}</a></li>
+                                        {% endfor %}
+                                        <li><a class="dropdownmenu" href="{{ path('app_countries') }}">Tous les pays</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown me-2">
+                                    <a class="nav-link dropdown-toggle" aria-current="page" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Où partir</a>
+                                    <ul class="dropdown-menu">
+                                        {% for post in ouPartirList %} 
+                                            <li><a class="dropdownmenu" href="{{ path('showonepost', {'id' : post.id }) }}">{{ post.title }}</a></li>
+                                        {% endfor %}    
+                                    </ul>
+                                </li>
+                                <li class="nav-item me-2">
+                                    <a class="nav-link" aria-current="page" href="{{path('app_actualites')}}">Actualités</a>
+                                </li>
+                                <li class="nav-item me-2">
+                                    <a class="nav-link" aria-current="page" href="{{path('app_guides')}}">Guides</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>            
+                </nav>
+            </div>
+        
+            {#end menu#}
+            {#logo#}     
+            <div class="col-md-2 col-xs-4 col-sm-4 logo mt-5 d-flex justify-content-end"><a class="connexion" href="{{path('app_post')}}"><img class="img-fluid" src="/images/Logo_blanc_det.png"></a></div>
+            {#end logo#}
+            {#login logout search#}
+            <div class="col-md-5 col-xs-4 col-sm-4 margin-top connexion-mobile">
+                <div class="row">
+                    {#login logout#}
+                    <div class="connexion d-flex flex-row-reverse col-md-10 col-xs-3 col-sm-3">
+                        <div class="row">
+                            <div class="col-md-12">
+                                {% if app.user %}
+                                {% if app.user.avatar is empty %}
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                         <small class="connexion-white me-2">{{ app.user.firstname }}</small><span class="connexion-white me-2">{{ app.user.lastname }}</span>   
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li><a class="dropdown-item" href="{{path('app_logout')}}"><i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>&ensp;Deconnexion</a></li>
+                                        <li><a class="dropdown-item" href="{{path('user.edit', {'id': app.user.id})}}"><i class="fa-solid fa-user"></i>&ensp;Profil</a></li>
+                                    </ul>
+                                </div>
+                                {% elseif app.user.roleadmin is empty %}
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img class="roundedImage me-1" src="{{asset('images/avatars/' ~ app.user.avatar)}}"> <small class="connexion-white me-2">{{ app.user.firstname }}</small><span class="connexion-white me-2">{{ app.user.lastname }}</span>
+                                        
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">  
+                                        <li><a class="dropdown-item" href="{{path('user.edit', {'id': app.user.id})}}"><i class="fa-solid fa-user"></i>&ensp;Profil</a></li>
+                                        <li><a class="dropdown-item" href="{{path('app_logout')}}"><i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>&ensp;Deconnexion</a></li>
+                                    </ul>
+                                </div>
+                                {% elseif app.user.roleadmin is not empty %}
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img class="roundedImage me-1" src="{{asset('images/avatars/' ~ app.user.avatar)}}"> <small class="connexion-white me-2">{{ app.user.firstname }}</small><span class="connexion-white me-2">{{ app.user.lastname }}</span>                                        
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li><a class="dropdown-item" href="{{path('admin')}}"><i class="fa-solid fa-laptop-code connexion me-2"></i>Tableau de bord</a></li>
+                                        <li><a class="dropdown-item" href="{{path('user.edit', {'id': app.user.id})}}"><i class="fa-solid fa-user"></i>&ensp;Profil</a></li>
+                                        <li><a class="dropdown-item" href="{{path('app_logout')}}"><i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>&ensp;Deconnexion</a></li>
+                                    </ul>
+                                </div>                               
+                                {% else %}
+                                <img class="roundedImage me-1" style="width:25px; height:25px; border-radius:50%" src="{{asset('images/avatars/' ~ app.user.avatar)}}"> <small>{{ app.user.firstname }}</small>&ensp;<span class="connexion me-3">{{ app.user.lastname }}</span>
+                                <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
+                                {% endif %} 
+                                {% else %}
+                                <a class="connexion-white me-3" href="{{path('app_login')}}" style="cursor:pointer">
+                                    <i class="fa-solid fa-user connexion-white me-2" cursor:pointer></i>Connexion
+                                </a>
+                                <a class="connexion-white me-3 mobile-hiden" href="{{path('app_register')}}" style="cursor:pointer">
+                                    <i class="fa-solid fa-user-plus connexion-white me-2" cursor:pointer></i>Inscription
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>  
+                    </div>
+                
+                {#end login logout#}
+                {#search#}
+                <div class="col-md-2 col-2 d-flex flex-row-reverse mobile-hiden">
+                    <button type="button" class="btn search" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <i class="fa-solid fa-magnifying-glass mobile-hiden"></i>
+                    </button>
+                </div> 
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-dialog modal-lg"><input class="form-control" type="search" placeholder='Par example "Portugal"'></div>
+                                <div class="modal-footer">
+                                    <button class="btn buttons" type="submit">Rechercher</i></button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                </div>            
+            </div>
+        </div>
+        </div>
+        {#end login logout search#}
+    </div>
+</div>

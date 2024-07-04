@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block title %}Pays{% endblock %}
+
+{% block body %}
+
+<div class="col-md-12 mb-2 d-flex justify-content-center mainsansavion"><h1 class="h1-main mb-5">Pays</h1></div>
+<div class="container mt-5">
+    
+    <div class="row">
+    {% for country in countries %}
+         <div class="col-md-4 mb-5">
+            <div class="col-md-12 d-flex justify-content-center">
+                <a href="{{ path('showonecountry', {'id' : country.id}) }}">
+                    <img class="img-fluid img-blocks" src="{{ asset('images/destinations/pays/'~country.image) }}" alt="{{ country.name }}">
+                </a>
+            </div>
+            <div class="col-md-12 city-title d-flex justify-content-center">
+                <a href="{{ path('showonecountry', {'id' : country.id}) }}">{{country.name }}
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

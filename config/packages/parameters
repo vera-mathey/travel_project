@@ -1,0 +1,4 @@
+parameters:
+  app.role: 
+    - ROLE_USER
+    - ROLE_GUIDE

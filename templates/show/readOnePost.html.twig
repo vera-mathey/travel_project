@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block title %}Voyagez naturellement{% endblock %}
+
+{% block body %}
+
+    <div style="background-image: linear-gradient(rgba(4, 56, 19, 0.8), rgba(0, 0, 0, 0.4)), url('{{asset('images/posts/' ~ post.image)}}')" class="mainpagecity d-flex justify-content-center">
+        <div class="container d-flex justify-content-center">
+            <h1 class="h1-main">{{post.title}}</h1>
+        </div>
+    </div>
+
+<div class="container post">
+   {% for country in post %}
+    <div class="col-md-12 mb-2 d-flex justify-content-center"><a href="{{path('showonecountry', {'id' :country.post.id}) }}"><p>{{country.post.name}}</p></a></div>
+    {% endfor %}
+    <div class="col-md-12 d-flex justify-content-center"><strong>{{post.abstract|raw|nl2br}}</strong></div>
+    <div class="col-md-12 d-flex justify-content-center mt-5 mb-5">{{post.content|raw|nl2br}}</div>
+    
+</div>
+{% if post.article == false %}
+<div class="container">
+    <div class="row">
+        {% for city in cities %}
+            <div class="col-md-4 mb-5">
+                <div class="col-md-12 d-flex justify-content-center"><a href="{{ path('showone', {'id' : city.id}) }}"><img class="img-fluid img-blocks" src="{{ asset('images/destinations/villes/'~city.image) }}" alt="{{ city.name }}"></a></div>
+                <div class="col-md-12 city-title d-flex justify-content-center"><a href="{{ path('showone', {'id' : city.id}) }}">{{city.name}}</a></div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+</div>
+{% endblock %}

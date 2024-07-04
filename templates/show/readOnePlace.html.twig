@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block title %}Voyagez naturellement{% endblock %}
+
+{% block body %}
+<div style="background-image: linear-gradient(rgba(4, 56, 19, 0.8), rgba(0, 0, 0, 0.4)), url('{{asset('images/destinations/places/' ~ place.image)}}')" class="mainpagecity d-flex justify-content-center">
+  <h1 class="h1-main">{{place.category}}&ensp;{{place.name}}</h1>      
+</div>
+<div class="container post">
+  <div class="col-md-12 mt-5 d-flex justify-content-center"><h2>A propos</h2></div>
+  <div class="col-md-12 d-flex justify-content-center"><p>Adresse :&nbsp; {{place.address}}</p1></div>
+  <div class="col-md-12 city-title d-flex justify-content-center">{{place.description|raw|nl2br}}</div>
+</div>
+<div class="container">
+  <div class="row mb-5">
+  {#Affichage des commentaires#}
+    <div class="col-md-12 mt-5"><h5>Commentaires</h5></div>
+      {% for comment in comments %}
+        <div class="row mt-5 d-flex align-content-center flex-wrap">
+          <div class="col-md-1 d-flex align-content-center flex-wrap">
+            <img class="img-fluid roundedImageComment" src="{{asset('images/avatars/' ~ comment.user.avatar)}}" alt="avatar"> 
+          </div>
+          <div class="col-md-11 d-flex align-content-center flex-wrap">
+            <span>{{ comment.user.firstname }} &nbsp; {{comment.user.lastname}}</span> &ensp;
+            <span>{{ comment.createdAt|date('D d M Y H:i') }}</span> 
+          </div>
+        </div>
+        <div class="col-md-12 mt-3">{{ comment.content|striptags|raw|nl2br }}</div>
+      {% endfor %}
+    </div>
+  </div>
+  {#Appel du formulaire#}
+    {% if is_granted('ROLE_USER') %}
+      <div class="container">
+        <div class="row mb-3">
+          {% include "comment/comment.html.twig" with{'parentcommentForm' : commentForm} %}
+        </div>
+      </div>
+    {% endif %}
+</div>        
+{% endblock %}

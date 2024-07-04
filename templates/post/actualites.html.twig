@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block title %}Actualités{% endblock %}
+
+{% block body %}
+
+<div class="col-md-12 mb-2 d-flex justify-content-center mainsansavion"><h1 class="h1-main mb-5">Actualités</h1></div>
+<div class="container mt-5">
+    
+    <div class="row">
+    {% for post in postList %}
+         <div class="col-md-4">
+            <div class="col-md-12 d-flex justify-content-center"><a href="{{ path('showonepost', {'id' : post.id}) }}"><img class="img-fluid img-blocks" src="{{ asset('images/posts/'~post.image) }}" alt="{{ post.title }}"></a></div>
+            <div class="col-md-12 city-title d-flex justify-content-center"><a href="{{ path('showonepost', {'id' : post.id}) }}">{{post.title }}</a></div>
+            <div class="col-md-12 d-flex justify-content-center mb-5"><a class="text abstract" href="{{ path('showonepost', {'id' : post.id}) }}">{{ post.abstract|raw|nl2br }}</a></div>
+            
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

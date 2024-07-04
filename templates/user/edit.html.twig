@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edition de profil{% endblock %}
+
+{% block body %}
+
+<div class="col-md-12">
+
+<div style="background-image: linear-gradient(rgba(4, 56, 19, 0.8), rgba(0, 0, 0, 0.4)), url('{{ asset('images/avatars/' ~ user.avatar) }}')" class="col-md-12 mainpagecity d-flex justify-content-center">
+    <h1 class="h1-main d-flex justify-content-center">Bonjour, {{user.firstname}}</h1>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-md-2"></div>
+<div class="col-md-8">
+<div class="row g-3 align-items-center">
+<form method="post">
+   {{ form_start(form) }}
+
+    {{ form_widget(form) }}
+
+    {{ form_end(form) }}
+</form>
+</div>
+</div>
+<div class="col-md-2"></div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

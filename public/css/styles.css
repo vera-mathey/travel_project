@@ -1,0 +1,322 @@
+/*polices*/
+.yuji-boku-regular {
+    font-family: "Yuji Boku", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .inter {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+/*header*/
+.connexion{
+    margin-top: 1.5%;
+    color: #000000;
+    font-size: 0.9em;
+    text-decoration: none;    
+}
+.connexion-white{
+    margin-top: 1.5%;
+    color: #ffffff;
+    font-size: 0.9em;
+    text-decoration: none;    
+}
+.dropdown-menu.show{
+    width: auto;
+}
+.btn{
+    background-color: #00000000;
+    border-color: #00000000;
+}
+.btn:hover{
+    background-color: #00000000;
+    border-color: #ffffff67;
+}
+
+.search{
+    width: 50%;
+    background-color: #ffffff00;
+    color: #fff;
+    margin-top: 0.2em;
+}
+.nav-link{
+    color: #fff;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+.dropdownmenu{
+    text-decoration: none;
+    margin-left: 10%;
+    color: #000000;
+    margin-bottom: 15%;
+}
+.dropdownmenu:hover{
+    text-decoration: none;
+    margin-left: 10%;
+    color: #04D9C4;
+}
+
+
+/*footer*/
+.footer{
+    background-color: #e4e4e4;
+}
+/*index*/
+@media (max-width: 1023px) {
+    .main{
+        margin-top: -20em;
+        padding-top: 15em;
+        background-image: linear-gradient(rgba(4, 56, 19, 0.7), rgba(0, 0, 0, 0.2)), url("/images/portugal-2392312.jpg");
+        background-size: cover; 
+    }
+    .h1-main{
+        padding-top: 1.5em;
+        font-size: 2.5em;
+        font-family: Inter, Arial, Helvetica, sans-serif;
+        font-weight: 550;
+        color: #fff;
+        letter-spacing: 0.05em;
+        line-height: 1.7em;  
+    }
+    .logo{
+        width: 40%;
+        margin-left: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .menu{
+        width: 40%;
+    }
+    .mobile-hiden{
+        display: none;
+    }
+    .fixed-top-navbar {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1320px; /* adjust this to your container width */
+        z-index: 1030; /* adjust this to your desired z-index */
+      }
+      
+      .fixed-top-navbar nav {
+        width: 100%;
+      }
+    .connexion-white{
+        margin-top: 0;
+        color: #ffffff;
+        font-size: 0.9em;
+        text-decoration: none;    
+    }
+    .margin-top{
+        margin-top: 15%;
+         
+    }
+    .connexion-mobile{
+        width: 40%;  
+    }
+    h2{
+        font-size: 1.5em;
+    }
+}
+@media (min-width: 1024px) {
+    .main{
+        margin-top: -15em;
+        padding-top: 15em;
+        background-image: linear-gradient(rgba(4, 56, 19, 0.7), rgba(0, 0, 0, 0.2)), url("/images/portugal-2392312.jpg");
+        background-size: cover;
+        padding-bottom: 5em;
+         
+    }
+    .h1-main{
+        padding-top: 2.5em;
+        
+        font-size: 4.5em;
+        font-family: Inter, Arial, Helvetica, sans-serif;
+        font-weight: 550;
+        color: #fff;
+        letter-spacing: 0.05em;
+        line-height: 1.7em; 
+    }
+    .logo{
+        width: 16%;
+    
+    }
+    .margin-top{
+        margin-top: 50px;   
+    }
+}
+    
+h2{
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-size: 2.5em;
+}
+.city-title a{
+    font-family: Yuji Boku, Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    text-decoration: none;
+    color: black;
+    width: 350px;
+}
+.guide-title a{
+    font-family: Yuji Boku, Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    text-decoration: none;
+    color: black;
+}
+.text{
+    text-decoration: none;
+    color: black;
+}
+.buttontransp{
+    border-color: #fff;
+    border-radius: 50px;
+    color: #fff;
+    padding: 2% 5% 2% 5%;
+    margin-bottom: 3em;
+    margin-top: 0.5em;
+    font-size: 1.5em;
+    font-weight: lighter;
+}
+.buttontransp:hover {
+    color: #ffffff;
+    background-color: #04D9C4;
+    border-color: #04D9C4;
+}
+.button-color{
+    border-color: #fff;
+    border-radius: 50px;
+    color: #fff;
+    padding: 0.5em 2em 0.5em 2em;
+    margin-bottom: 2em;
+    font-size: 1.5em;
+    background: #04D9C4;
+    background-image: -webkit-linear-gradient(top, #04D9C4, #00b7bd);
+    background-image: -moz-linear-gradient(top, #04D9C4, #00b7bd);
+    background-image: -ms-linear-gradient(top, #04D9C4, #00b7bd);
+    background-image: -o-linear-gradient(top, #04D9C4, #00b7bd);
+    background-image: linear-gradient(to bottom, #04D9C4,#00b7bd); 
+}
+.button-color:hover{
+    border-color: #04D9C4;
+    background-image: -webkit-linear-gradient(top, #1de3cf, #64e3d6);
+    background-image: -moz-linear-gradient(top, #1de3cf, #64e3d6);
+    background-image: -ms-linear-gradient(top, #1de3cf, #64e3d6);
+    background-image: -o-linear-gradient(top, #1de3cf, #64e3d6);
+    background-image: linear-gradient(to bottom, #1de3cf, #64e3d6);
+    color: #ffffff;
+}
+.img-blocks{
+    width: 350px; 
+    height: 250px; 
+    object-fit: cover;
+}
+.roundedImage{
+    width: 25px; 
+    height: 25px; 
+    object-fit: cover;
+    border-radius: 50%;
+}
+.carusel{
+    background-color: #04D9C4;
+    
+}
+.carousel-control-prev{
+    width: 5%;
+} 
+.carousel-control-prev{
+    width: 5%;
+} 
+.img-carusel{
+    width: auto; 
+    height: 400px; 
+}
+.h1-carusel{
+    font-size: 3.5rem;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-weight: 550;
+    color: #fff;
+    letter-spacing: 0.02em;
+    line-height: 1.5em;
+    text-decoration: none; 
+}
+.text-carusel{
+    text-decoration: none;
+    color: #fff;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.button-carusel{
+    border-color: #fff;
+    border-radius: 50px;
+    color: #fff;
+    padding-left: 4%;
+    padding-right: 4%;
+    margin-bottom: 2em;
+    font-size: 1.5em; 
+    background-color: #04D9C4; 
+}
+.avatar{
+    width: 200px; 
+    height: 200px; 
+    object-fit: cover;
+    border-radius: 50%; 
+}
+/*pages*/
+.mainpagecity{
+    margin-top: -10em;
+    padding-top: 7em;
+    padding-bottom: 7em;
+    background-size: cover;
+    background-position: center center;
+    margin-bottom: 3em;
+}
+.mainsansavion{
+    margin-top: -15em;
+    padding-top: 15em;
+    background-image: linear-gradient(rgba(4, 56, 19, 0.7), rgba(0, 0, 0, 0.2)), url("/images/portugal-23923121.jpg");
+    background-size: cover; 
+}
+.abstract {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 350px;
+}
+.h2-main{
+    font-size: 2.5rem;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: 0.05em;
+}
+.bio{
+    background-image: url("/images/quotation-mark-7228448.svg");
+    fill: #04d9c465;
+    height: auto;
+    background-repeat: no-repeat;
+}
+.citation{
+    color: #04d9c465;
+    
+}
+/*comments*/
+.parent-comment-form.expanded {
+    height: auto;
+}
+.roundedImageComment{
+    width: 85x; 
+    height: 85px; 
+    object-fit: cover;
+    border-radius: 50%;
+}

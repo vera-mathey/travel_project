@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block title %}Guides{% endblock %}
+
+{% block body %}
+
+<div class="col-md-12 mb-2 d-flex justify-content-center mainsansavion"><h1 class="h1-main mb-5">Guides</h1></div>
+<div class="container mt-5">
+    
+    <div class="row">
+    {% for guide in guides %}
+         <div class="col-md-4 mb-5">
+            <div class="col-md-12 d-flex justify-content-center"><a href="{{ path('showoneguide', {'id' : guide.id}) }}"><img class="img-fluid avatar" src="{{ asset('images/avatars/'~guide.avatar) }}" alt="{{ guide.firstname }}"></a></div>
+            <div class="col-md-12 guide-title d-flex justify-content-center"><a href="{{ path('showoneguide', {'id' : guide.id}) }}">{{guide.firstname }}</a></div>
+            <div class="col-md-12 d-flex justify-content-center"><a class="text" href="{{ path('showoneguide', {'id' : guide.id}) }}">{{ guide.city|raw|nl2br }}</a></div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

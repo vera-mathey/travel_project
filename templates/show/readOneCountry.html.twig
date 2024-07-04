@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block title %}Voyagez naturellement{% endblock %}
+
+{% block body %}
+
+    <div style="background-image: linear-gradient(rgba(4, 56, 19, 0.8), rgba(0, 0, 0, 0.4)), url('{{asset('images/destinations/pays/' ~ country.image)}}')" class="mainpagecity d-flex justify-content-center">
+        <h1 class="h1-main">{{country.name}}</h1>
+        
+    </div>
+
+<div class="container">
+   
+    
+    <div class="col-md-12 city-title d-flex justify-content-center mb-5">{{country.description|raw|nl2br}}</a></div>
+</div>
+<div class="container mb-5">
+<div class="col-md-12 mt-5 mb-3"><h2>{{country.name}} : à decouvrir </h2></div>
+  <div class="row">
+    {% for city in cities %}
+      <div class="col-md-4">
+      <div class="col-md-12 d-flex justify-content-center"><a href="{{ path('showone', {'id' : city.id}) }}"><img class="img-fluid img-blocks" src="{{ asset('images/destinations/villes/'~city.image) }}" alt="{{ city.name }}"></a></div>
+        <div class="col-md-12 guide-title d-flex justify-content-center"><a href="{{ path('showone', {'id' : city.id}) }}">{{ city.name }}</a></div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -5,10 +5,15 @@
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
-/var/
+
 /vendor/
 ###< symfony/framework-bundle ###
-
+# Ignore everything in the var directory except certain subdirectories
+/var/*
+!/var/log/
+!/var/log/.gitkeep
+!/var/cache/
+!/var/cache/.gitkeep
 ###> phpunit/phpunit ###
 /phpunit.xml
 .phpunit.result.cache
